@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kireikies Cookies 🍪
+
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-Animations-green?style=for-the-badge)](https://greensock.com/gsap/)
+
+Kireikies is a premium, modern minimalist brand portfolio and landing page for an artisan homemade bakery specializing in gourmet cookies. Built with a focus on visual excellence, smooth interactions, and a warm, organic aesthetic.
+
+## Features
+
+- **Modern Minimalist Design**: A clean, premium aesthetic using warm organic tones (cream, beige, terracotta).
+- **Interactive Hero Section**: High-impact big typography with a dynamic image slider powered by GSAP and Swiper.js.
+- **Smooth Scrolling**: Implemented using Lenis for a luxurious, fluid browsing experience.
+- **Responsive Layout**: Fully optimized for all devices, from mobile to ultra-wide displays.
+- **Centralized Data Management**: Menu items and product details are managed in a single source of truth for easy updates.
+- **Glassmorphism Effects**: Subtle, high-end visual layers throughout the interface.
+- **Scroll Animations**: AOS (Animate On Scroll) integrated for elegant content entrance.
+
+## Tech Stack
+
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Typography**: Playfair Display (Serif) & Manrope (Sans-serif) via Google Fonts
+- **Animations**: [GSAP](https://greensock.com/gsap/) & [AOS](https://michalsnik.github.io/aos/)
+- **Smooth Scroll**: [Lenis](https://lenis.darkroom.engineering/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Components**: [Swiper.js](https://swiperjs.com/) (Carousel)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18.x or later
+- npm / yarn / pnpm
+
+### Installation
+
+1. **Clone the repository**
+
+    ```bash
+    git clone https://github.com/your-username/kireikies-cookies.git
+    cd kireikies-cookies
+    ```
+
+2. **Install dependencies**
+
+    ```bash
+    npm install
+    ```
+
+3. **Run the development server**
+
+    ```bash
+    npm run dev
+    ```
+
+4. **Open the site**
+   Visit [http://localhost:3000](http://localhost:3000) to see the result.
+
+## Project Structure
+
+```text
+├── app/               # Next.js App Router (Pages & Layout)
+├── components/        # Reusable UI Components
+├── lib/               # Utilities & Centralized Data (menuData.ts)
+├── public/            # Static Assets (Images, Icons)
+└── README.md          # Project Documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Visual Concept
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Palette**: Warm Neutrals (#FCFAFA, #E8D5C4, #2D241E, #B47B5E)
+- **Concept**: "Modern Minimalist with Soft Organic Tones"
+- **Experience**: Premium, Warm, Artistic, and Professional.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
