@@ -3,10 +3,24 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import OrderRedirectModal from './OrderRedirectModal';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isRedirectModalOpen, setIsRedirectModalOpen] = useState(false);
+
+    const GOFOOD_URL = "https://gofood.co.id/sukabumi/restaurant/kireikies-39034643-c018-4fc6-8722-dcb8b9bbc975";
+
+    const handleOrderClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setIsRedirectModalOpen(true);
+    };
+
+    const confirmOrder = () => {
+        window.open(GOFOOD_URL, '_blank');
+        setIsRedirectModalOpen(false);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -51,9 +65,12 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
-                    <Link href="/menu" className="bg-foreground text-background px-6 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">
+                    <button 
+                        onClick={handleOrderClick}
+                        className="bg-foreground text-background px-6 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+                    >
                         Order Now
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -82,15 +99,20 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
-                    <Link 
-                        href="/menu" 
+                    <button 
+                        onClick={handleOrderClick}
                         className="bg-foreground text-background px-6 py-3 rounded-full text-center font-medium"
-                        onClick={() => setIsMobileMenuOpen(false)}
                     >
                         Order Now
-                    </Link>
+                    </button>
                 </div>
             )}
+
+            <OrderRedirectModal 
+                isOpen={isRedirectModalOpen} 
+                onClose={() => setIsRedirectModalOpen(false)} 
+                onConfirm={confirmOrder} 
+            />
         </nav>
     );
 };

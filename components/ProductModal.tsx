@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { MenuItem } from '@/lib/menuData';
 import { motion, AnimatePresence } from 'framer-motion';
+import OrderRedirectModal from './OrderRedirectModal';
 
 interface ProductModalProps {
     product: MenuItem | null;
@@ -17,6 +18,19 @@ const ProductModal: React.FC<ProductModalProps> = ({
     onClose,
 }) => {
     const [mounted, setMounted] = useState(false);
+    const [isRedirectModalOpen, setIsRedirectModalOpen] = useState(false);
+
+    const GOFOOD_URL =
+        'https://gofood.co.id/sukabumi/restaurant/kireikies-39034643-c018-4fc6-8722-dcb8b9bbc975';
+
+    const handleAddToCart = () => {
+        setIsRedirectModalOpen(true);
+    };
+
+    const confirmOrder = () => {
+        window.open(GOFOOD_URL, '_blank');
+        setIsRedirectModalOpen(false);
+    };
 
     useEffect(() => {
         setMounted(true);
@@ -57,7 +71,20 @@ const ProductModal: React.FC<ProductModalProps> = ({
                             onClick={onClose}
                             className="absolute top-6 right-6 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-sm hover:bg-white transition-colors"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
                         </button>
 
                         {/* Image Section */}
@@ -93,7 +120,36 @@ const ProductModal: React.FC<ProductModalProps> = ({
                             <div className="space-y-8 mb-12">
                                 <div>
                                     <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest mb-3 text-foreground/40">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> Description
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="14"
+                                            height="14"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <circle
+                                                cx="12"
+                                                cy="12"
+                                                r="10"
+                                            ></circle>
+                                            <line
+                                                x1="12"
+                                                y1="16"
+                                                x2="12"
+                                                y2="12"
+                                            ></line>
+                                            <line
+                                                x1="12"
+                                                y1="8"
+                                                x2="12.01"
+                                                y2="8"
+                                            ></line>
+                                        </svg>{' '}
+                                        Description
                                     </h4>
                                     <p className="text-foreground/70 leading-relaxed">
                                         {product.desc}
@@ -122,7 +178,25 @@ const ProductModal: React.FC<ProductModalProps> = ({
                                     {product.weight && (
                                         <div>
                                             <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest mb-3 text-foreground/40">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="5" r="3"></circle><path d="M6.5 8a2 2 0 0 0-1.905 1.46L2.1 18.5A2 2 0 0 0 4 21h16a2 2 0 0 0 1.9-2.5l-2.495-9.04A2 2 0 0 0 17.5 8Z"></path></svg> Weight
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                >
+                                                    <circle
+                                                        cx="12"
+                                                        cy="5"
+                                                        r="3"
+                                                    ></circle>
+                                                    <path d="M6.5 8a2 2 0 0 0-1.905 1.46L2.1 18.5A2 2 0 0 0 4 21h16a2 2 0 0 0 1.9-2.5l-2.495-9.04A2 2 0 0 0 17.5 8Z"></path>
+                                                </svg>{' '}
+                                                Weight
                                             </h4>
                                             <p className="text-sm font-bold">
                                                 {product.weight}
@@ -142,12 +216,36 @@ const ProductModal: React.FC<ProductModalProps> = ({
                                 </div>
                             </div>
 
-                            <button className="w-full bg-[#2D241E] text-white py-5 rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-terracotta transition-colors group">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                            <button
+                                onClick={handleAddToCart}
+                                className="w-full bg-[#2D241E] text-white py-5 rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-terracotta transition-colors group"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="group-hover:scale-110 transition-transform"
+                                >
+                                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                                    <path d="M3 6h18"></path>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
                                 Add to Cart — {product.price}
                             </button>
                         </div>
                     </motion.div>
+
+                    <OrderRedirectModal
+                        isOpen={isRedirectModalOpen}
+                        onClose={() => setIsRedirectModalOpen(false)}
+                        onConfirm={confirmOrder}
+                    />
                 </div>
             )}
         </AnimatePresence>

@@ -1,19 +1,33 @@
-'use client';
+"use client";
 
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { getFeaturedProducts, MenuItem } from '@/lib/menuData';
 import ProductModal from './ProductModal';
+import OrderRedirectModal from './OrderRedirectModal';
 
 const products = getFeaturedProducts();
 
 const ProductShowcase = () => {
     const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isRedirectModalOpen, setIsRedirectModalOpen] = useState(false);
+
+    const GOFOOD_URL = "https://gofood.co.id/sukabumi/restaurant/kireikies-39034643-c018-4fc6-8722-dcb8b9bbc975";
 
     const openModal = (product: MenuItem) => {
         setSelectedProduct(product);
         setIsModalOpen(true);
+    };
+
+    const handleQuickOrder = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsRedirectModalOpen(true);
+    };
+
+    const confirmOrder = () => {
+        window.open(GOFOOD_URL, '_blank');
+        setIsRedirectModalOpen(false);
     };
 
     return (
@@ -62,10 +76,7 @@ const ProductShowcase = () => {
                                 )}
                                 <button 
                                     className="absolute bottom-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-terracotta hover:text-white"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        openModal(product);
-                                    }}
+                                    onClick={handleQuickOrder}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                                 </button>
@@ -97,6 +108,12 @@ const ProductShowcase = () => {
                 product={selectedProduct} 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
+            />
+
+            <OrderRedirectModal 
+                isOpen={isRedirectModalOpen} 
+                onClose={() => setIsRedirectModalOpen(false)} 
+                onConfirm={confirmOrder} 
             />
         </section>
     );
