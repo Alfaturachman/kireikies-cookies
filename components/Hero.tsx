@@ -82,9 +82,6 @@ const Hero = () => {
                         >
                             Explore Menu
                         </Link>
-                        <button className="border border-foreground/10 px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-foreground hover:text-background transition-all">
-                            Our Story
-                        </button>
                     </div>
                 </div>
             </div>

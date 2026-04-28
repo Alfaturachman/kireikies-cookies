@@ -1,44 +1,36 @@
-# Kireikies Cookies
+# Kireikies — Artisan Cookie Portfolio
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![GSAP](https://img.shields.io/badge/GSAP-Animations-green?style=for-the-badge)](https://greensock.com/gsap/)
+Kireikies is a premium, modern minimalist landing page for an artisan bakery brand. Built with a focus on high-end aesthetics, smooth interactions, and a "warm luxury" feel.
 
-Kireikies is a premium, modern minimalist brand portfolio and landing page for an artisan homemade bakery specializing in gourmet cookies. Built with a focus on visual excellence, smooth interactions, and a warm, organic aesthetic.
+![Kireikies Preview](https://via.placeholder.com/1200x600?text=Kireikies+Artisan+Cookies)
 
 ## Features
 
-- **Modern Minimalist Design**: A clean, premium aesthetic using warm organic tones (cream, beige, terracotta).
-- **Interactive Hero Section**: High-impact big typography with a dynamic image slider powered by GSAP and Swiper.js.
-- **Smooth Scrolling**: Implemented using Lenis for a luxurious, fluid browsing experience.
-- **Responsive Layout**: Fully optimized for all devices, from mobile to ultra-wide displays.
-- **Centralized Data Management**: Menu items and product details are managed in a single source of truth for easy updates.
-- **Glassmorphism Effects**: Subtle, high-end visual layers throughout the interface.
-- **Scroll Animations**: AOS (Animate On Scroll) integrated for elegant content entrance.
+- **Premium Hero Section**: GSAP-powered typography animations and an interactive product slider.
+- **Dynamic Product Showcase**: High-quality product grid with smooth hover effects and a centered minimalist "View Detail" button.
+- **Artisan Detail Modal**: A silky-smooth modal (using Framer Motion) that reveals ingredients, allergens, and product stories without leaving the page.
+- **Full Menu Page**: A dedicated page for the entire product collection, categorized for easy browsing.
+- **Smooth Interaction**: Integrated **Lenis** for smooth inertia scrolling and **AOS** for elegant entrance animations.
+- **Centralized Data**: Single source of truth in `lib/menuData.ts` for easy maintenance of prices, images, and descriptions.
+- **Responsive Design**: Meticulously crafted for seamless browsing on mobile, tablet, and desktop.
 
-## Tech Stack
+## Technology Stack
 
-- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Typography**: Playfair Display (Serif) & Manrope (Sans-serif) via Google Fonts
-- **Animations**: [GSAP](https://greensock.com/gsap/) & [AOS](https://michalsnik.github.io/aos/)
-- **Smooth Scroll**: [Lenis](https://lenis.darkroom.engineering/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Components**: [Swiper.js](https://swiperjs.com/) (Carousel)
+- **Animations**: [GSAP](https://greensock.com/gsap/), [Framer Motion](https://www.framer.com/motion/), [AOS](https://michalsnik.github.io/aos/)
+- **Scrolling**: [Lenis](https://lenis.darkroom.engineering/)
+- **Icons**: Optimized Inline SVGs (No external dependencies)
+- **Typography**: Playfair Display (Serif) & Manrope (Sans)
 
 ## Getting Started
-
-### Prerequisites
-
-- Node.js 18.x or later
-- npm / yarn / pnpm
 
 ### Installation
 
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/your-username/kireikies-cookies.git
+    git clone https://github.com/Alfaturachman/kireikies-cookies.git
     cd kireikies-cookies
     ```
 
@@ -60,17 +52,28 @@ Kireikies is a premium, modern minimalist brand portfolio and landing page for a
 ## Project Structure
 
 ```text
-├── app/               # Next.js App Router (Pages & Layout)
-├── components/        # Reusable UI Components
-├── lib/               # Utilities & Centralized Data (menuData.ts)
-├── public/            # Static Assets (Images, Icons)
-└── README.md          # Project Documentation
+├── app/               # Next.js App Router (Layouts & Pages)
+│   ├── menu/          # Full Menu Page
+│   └── globals.css    # Design System & Tailwind Utilities
+├── components/        # Modular UI Components (Navbar, Hero, Footer, etc.)
+├── lib/               # Shared logic & Product Data (menuData.ts)
+├── public/            # Static assets (Artisan cookie images)
+└── README.md          # Project documentation
 ```
 
-## Visual Concept
+## Design System
 
-- **Palette**: Warm Neutrals (#FCFAFA, #E8D5C4, #2D241E, #B47B5E)
-- **Concept**: "Modern Minimalist with Soft Organic Tones"
-- **Experience**: Premium, Warm, Artistic, and Professional.
+- **Colors**:
+    - `Foreground`: #2D241E (Deep Brown)
+    - `Background`: #FCFAFA (Off-White)
+    - `Accent`: #B47B5E (Terracotta)
+- **Aesthetics**: Glassmorphism, Large Serif Typography, Soft Organic Shapes.
+
+## Developer
+
+Designed and developed by **Alfaturachman Maulana Pahlevi**  
+[GitHub Profile](https://github.com/Alfaturachman)
 
 ---
+
+_Stay Sweet. Stay Kireikies._
