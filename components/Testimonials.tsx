@@ -6,23 +6,23 @@ import { Star } from 'lucide-react';
 const testimonials = [
     {
         id: 1,
-        name: 'Sarah Jenkins',
-        role: 'Pastry Enthusiast',
+        name: 'Nita Safitri',
+        role: 'Local Customer',
         content:
             'The texture is absolutely perfect. The Sea Salt Dark Choco is a revelation—I’ve never had a cookie this balanced.',
         rating: 5,
     },
     {
         id: 2,
-        name: 'Michael Chen',
-        role: 'Food Blogger',
+        name: 'Andra Suryana',
+        role: 'Local Customer',
         content:
             'Kireikies has mastered the art of the chewy center. It feels like a warm hug in every bite. Highly recommended!',
         rating: 5,
     },
     {
         id: 3,
-        name: 'Emma Rodriguez',
+        name: 'Panji Priyadi',
         role: 'Local Customer',
         content:
             'I buy a batch every week for my family. They are fresh, artisan, and you can really taste the quality of the butter.',
@@ -52,7 +52,7 @@ const Testimonials = () => {
                     {testimonials.map((item) => (
                         <div
                             key={item.id}
-                            className="p-8 rounded-3xl bg-[#FCFAFA] border border-foreground/5 hover:border-terracotta/20 transition-colors duration-300"
+                            className="flex flex-col h-full p-8 rounded-3xl bg-[#FCFAFA] border border-foreground/5 hover:border-terracotta/20 transition-colors duration-300"
                         >
                             <div className="flex gap-1 mb-6 text-terracotta">
                                 {[...Array(item.rating)].map((_, i) => (
@@ -66,7 +66,7 @@ const Testimonials = () => {
                             <p className="text-lg text-foreground/80 mb-8 italic leading-relaxed">
                                 "{item.content}"
                             </p>
-                            <div>
+                            <div className="mt-auto pt-6 border-t border-foreground/5">
                                 <h4 className="font-serif text-xl mb-1">
                                     {item.name}
                                 </h4>

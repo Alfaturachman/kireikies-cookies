@@ -4,11 +4,11 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { MENU_DATA } from '@/lib/menuData';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 
 const Hero = () => {
@@ -38,12 +38,9 @@ const Hero = () => {
         return () => ctx.revert();
     }, []);
 
-    const sliderImages = [
-        { id: 1, title: 'Signature Dark' },
-        { id: 2, title: 'Golden Butter' },
-        { id: 3, title: 'Roasted Nut' },
-        { id: 4, title: 'Matcha Bliss' },
-    ];
+    const sliderItems =
+        MENU_DATA.find((cat) => cat.category === 'Signature Classics')?.items ||
+        [];
 
     return (
         <section
@@ -79,7 +76,10 @@ const Hero = () => {
                         slow-baked into moments of pure indulgence.
                     </p>
                     <div className="flex gap-4">
-                        <Link href="/menu" className="bg-foreground text-background px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform flex items-center justify-center">
+                        <Link
+                            href="/menu"
+                            className="bg-foreground text-background px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform flex items-center justify-center"
+                        >
                             Explore Menu
                         </Link>
                         <button className="border border-foreground/10 px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-foreground hover:text-background transition-all">
@@ -110,19 +110,32 @@ const Hero = () => {
                     pagination={{ clickable: true }}
                     className="hero-swiper pb-16"
                 >
-                    {sliderImages.map((item) => (
+                    {sliderItems.map((item) => (
                         <SwiperSlide key={item.id}>
-                            <div className="aspect-[16/10] bg-[#F5F1EE] rounded-3xl overflow-hidden relative group border border-foreground/5 shadow-sm">
-                                <div className="absolute inset-0 flex items-center justify-center text-foreground/20 font-serif italic text-xl">
-                                    {item.title} Image
+                            <Link
+                                href="/menu"
+                                className="block aspect-[16/10] bg-[#F5F1EE] rounded-3xl overflow-hidden relative group border border-foreground/5 shadow-sm"
+                            >
+                                {item.image ? (
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center text-foreground/20 font-serif italic text-xl">
+                                        {item.name}
+                                    </div>
+                                )}
+
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                                    <div className="transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                                        <span className="text-white border border-white/40 bg-white/10 backdrop-blur-md px-8 py-3 rounded-full text-xs font-bold tracking-[0.2em] uppercase">
+                                            View Detail
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-                                <div className="absolute bottom-8 left-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                    <span className="text-white bg-terracotta px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
-                                        View Detail
-                                    </span>
-                                </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     ))}
                 </Swiper>

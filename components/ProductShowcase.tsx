@@ -1,11 +1,22 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
-import { getFeaturedProducts } from '@/lib/menuData';
+import { getFeaturedProducts, MenuItem } from '@/lib/menuData';
+import ProductModal from './ProductModal';
 
 const products = getFeaturedProducts();
 
 const ProductShowcase = () => {
+    const [selectedProduct, setSelectedProduct] = useState<MenuItem | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = (product: MenuItem) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    };
+
     return (
         <section id="products" className="py-24 md:py-32 bg-[#FCFAFA]">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -31,14 +42,32 @@ const ProductShowcase = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {products.map((product) => (
-                        <div key={product.id} className="group cursor-pointer">
+                        <div 
+                            key={product.id} 
+                            className="group cursor-pointer"
+                            onClick={() => openModal(product)}
+                        >
                             <div
                                 className={`${product.color} aspect-square rounded-3xl mb-6 relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] shadow-sm`}
                             >
-                                <div className="absolute inset-0 flex items-center justify-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500 font-serif italic">
-                                    Product Image
-                                </div>
-                                <button className="absolute bottom-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-foreground hover:text-white">
+                                {product.image ? (
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500 font-serif italic">
+                                        Product Image
+                                    </div>
+                                )}
+                                <button 
+                                    className="absolute bottom-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-terracotta hover:text-white"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        openModal(product);
+                                    }}
+                                >
                                     <ShoppingBag size={20} />
                                 </button>
                             </div>
@@ -64,6 +93,12 @@ const ProductShowcase = () => {
                     View Full Menu
                 </Link>
             </div>
+
+            <ProductModal 
+                product={selectedProduct} 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
         </section>
     );
 };
