@@ -18,7 +18,6 @@ const About = () => {
                                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                             />
                         </div>
-                        <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-accent/30 organic-shape -z-10 blur-xl" />
                     </div>
 
                     <div className="order-1 lg:order-2">

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Star } from 'lucide-react';
 
 const testimonials = [
     {
@@ -56,11 +55,20 @@ const Testimonials = () => {
                         >
                             <div className="flex gap-1 mb-6 text-terracotta">
                                 {[...Array(item.rating)].map((_, i) => (
-                                    <Star
+                                    <svg
                                         key={i}
-                                        size={16}
-                                        fill="currentColor"
-                                    />
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="#c69271"
+                                        stroke="#c69271"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    >
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
                                 ))}
                             </div>
                             <p className="text-lg text-foreground/80 mb-8 italic leading-relaxed">
