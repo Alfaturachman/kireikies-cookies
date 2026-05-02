@@ -1,59 +1,64 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #FCFAFA;
-  --foreground: #2D241E;
-  --accent: #E8D5C4;
-  --accent-dark: #C9A98E;
-  --terracotta: #B47B5E;
-  --glass: rgba(252, 250, 250, 0.7);
+    --background: #fcfafa;
+    --foreground: #2d241e;
+    --accent: #e8d5c4;
+    --accent-dark: #c9a98e;
+    --terracotta: #b47b5e;
+    --glass: rgba(252, 250, 250, 0.7);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
-  --color-terracotta: var(--terracotta);
-  --color-glass: var(--glass);
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-manrope);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-accent: var(--accent);
+    --color-accent-dark: var(--accent-dark);
+    --color-terracotta: var(--terracotta);
+    --color-glass: var(--glass);
+    --font-serif: var(--font-playfair);
+    --font-sans: var(--font-manrope);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-manrope), sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope), sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-playfair), serif;
 }
 
 .glass {
-  background: var(--glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .organic-shape {
-  --radius-organic: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    --radius-organic: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(45, 36, 30, 0.1);
-  border-radius: 10px;
+    background: rgba(45, 36, 30, 0.1);
+    border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(45, 36, 30, 0.2);
+    background: rgba(45, 36, 30, 0.2);
 }

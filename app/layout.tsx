@@ -14,7 +14,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
     title: 'Kireikies Cookies | Artisan Homemade Bakery',
-    description: 'Modern minimalist cookies brand portfolio with premium visual storytelling.',
+    description:
+        'Modern minimalist cookies brand portfolio with premium visual storytelling.',
 };
 
 export default function RootLayout({

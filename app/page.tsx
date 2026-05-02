@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import FeaturedProducts from '@/components/FeaturedProducts';
 import About from '@/components/About';
 import ProductShowcase from '@/components/ProductShowcase';
 import Testimonials from '@/components/Testimonials';
@@ -15,6 +16,7 @@ export default function Home() {
                 <main className="min-h-screen">
                     <Navbar />
                     <Hero />
+                    <FeaturedProducts />
 
                     {/* About */}
                     <div data-aos="fade-up">

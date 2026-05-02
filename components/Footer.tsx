@@ -14,9 +14,9 @@ const Footer = () => {
                             Kireikies
                         </a>
                         <p className="text-[#FCFAFA]/60 max-w-sm mx-auto md:mx-0 leading-relaxed">
-                            Crafting premium artisan cookies for moments of joy
-                            and comfort. Available for nationwide shipping and
-                            local pickup.
+                            Bringing premium artisan cookies to your special
+                            moments, with delivery and pickup available in our
+                            local area.
                         </p>
                     </div>
                     <div>
