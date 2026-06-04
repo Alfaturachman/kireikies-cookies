@@ -5,8 +5,12 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import OrderRedirectModal from './OrderRedirectModal';
 
-const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
+interface NavbarProps {
+    transparentOnTop?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ transparentOnTop = true }) => {
+    const [isScrolled, setIsScrolled] = useState(!transparentOnTop);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isRedirectModalOpen, setIsRedirectModalOpen] = useState(false);
 
@@ -24,12 +28,13 @@ const Navbar = () => {
     };
 
     useEffect(() => {
+        if (!transparentOnTop) return;
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [transparentOnTop]);
 
     const navLinks = [
         { name: 'Home', href: '/#home' },
@@ -43,8 +48,10 @@ const Navbar = () => {
     return (
         <nav
             className={cn(
-                'fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4 md:px-12',
-                isScrolled ? 'glass py-3' : 'bg-transparent text-white',
+                'fixed z-50 transition-all duration-500 ease-in-out left-1/2 -translate-x-1/2 max-w-7xl',
+                isScrolled
+                    ? 'top-4 w-[calc(100%-2rem)] glass py-3 px-6 md:px-8 rounded-2xl md:rounded-full shadow-lg shadow-black/5'
+                    : 'top-0 w-full bg-transparent text-white py-5 px-6 md:px-12 rounded-none',
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -89,9 +96,7 @@ const Navbar = () => {
                 <button
                     className={cn(
                         'md:hidden transition-colors',
-                        !isScrolled && !isMobileMenuOpen
-                            ? 'text-white'
-                            : 'text-foreground',
+                        !isScrolled ? 'text-white' : 'text-foreground',
                     )}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
@@ -132,7 +137,14 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-lg border-t border-foreground/5 py-6 px-6 flex flex-col space-y-4">
+                <div
+                    className={cn(
+                        'md:hidden absolute left-0 w-full bg-background/95 backdrop-blur-lg py-6 px-6 flex flex-col space-y-4 text-foreground transition-all duration-300 shadow-xl',
+                        isScrolled
+                            ? 'top-[calc(100%+0.5rem)] rounded-2xl border border-foreground/10'
+                            : 'top-full rounded-b-2xl border-t border-foreground/5',
+                    )}
+                >
                     {navLinks.map((link) => (
                         <a
                             key={link.name}

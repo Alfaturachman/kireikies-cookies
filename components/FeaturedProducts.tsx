@@ -20,15 +20,6 @@ const FeaturedProducts = () => {
     return (
         <section className="py-24 bg-background">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="mb-12 text-center">
-                    <span className="text-terracotta font-bold uppercase tracking-[0.3em] text-xs block mb-4">
-                        Curated Selection
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-serif">
-                        Signature Classics
-                    </h2>
-                </div>
-
                 <div className="w-full max-w-[1400px] mx-auto">
                     <Swiper
                         modules={[Autoplay, Pagination]}

@@ -56,7 +56,7 @@ const ProductShowcase = () => {
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     {products.map((product) => (
                         <div
                             key={product.id}
@@ -64,7 +64,7 @@ const ProductShowcase = () => {
                             onClick={() => openModal(product)}
                         >
                             <div
-                                className={`${product.color} aspect-square rounded-3xl mb-6 relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] shadow-sm`}
+                                className={`${product.color} aspect-square rounded-2xl md:rounded-3xl mb-3 md:mb-6 relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] shadow-sm`}
                             >
                                 {product.image ? (
                                     <img
@@ -78,7 +78,7 @@ const ProductShowcase = () => {
                                     </div>
                                 )}
                                 <button
-                                    className="absolute bottom-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-terracotta hover:text-white"
+                                    className="absolute bottom-6 right-6 w-12 h-12 bg-white rounded-full hidden md:flex items-center justify-center shadow-lg transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-terracotta hover:text-white"
                                     onClick={handleQuickOrder}
                                 >
                                     <svg
@@ -98,15 +98,15 @@ const ProductShowcase = () => {
                                     </svg>
                                 </button>
                             </div>
-                            <div className="flex justify-between items-start mb-2">
-                                <h3 className="text-xl font-serif">
+                            <div className="flex flex-col sm:flex-row justify-between sm:items-start mb-2 gap-1">
+                                <h3 className="text-base md:text-xl font-serif leading-tight">
                                     {product.name}
                                 </h3>
-                                <span className="font-medium text-terracotta">
+                                <span className="font-medium text-terracotta text-sm md:text-base shrink-0">
                                     {product.price}
                                 </span>
                             </div>
-                            <p className="text-sm text-foreground/60 leading-relaxed line-clamp-2">
+                            <p className="text-xs md:text-sm text-foreground/60 leading-relaxed line-clamp-2">
                                 {product.desc}
                             </p>
                         </div>

@@ -16,7 +16,6 @@ export default function Home() {
                 <main className="min-h-screen">
                     <Navbar />
                     <Hero />
-                    <FeaturedProducts />
 
                     {/* About */}
                     <div data-aos="fade-up">
